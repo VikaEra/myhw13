@@ -26,7 +26,7 @@ public class ShopRepository {
      * @param product — добавляемый товар
      */
     public void add(Product product) {
-        if (FindById(product.getId()) != null) {
+        if (findById(product.getId()) != null) {
             throw new AlreadyExistsException(
                     "Element with id: " + product.getId() + " already exist"
             );
@@ -39,7 +39,7 @@ public class ShopRepository {
     }
 
     public void remove(int id) {
-        if (FindById(id) == null) {
+        if (findById(id) == null) {
             throw new NotFoundException(
                     "Element with id: " + id + " not found"
             );
@@ -56,7 +56,7 @@ public class ShopRepository {
     }
 
 
-    private Product FindById(int id) {
+    private Product findById(int id) {
         for (Product product : products) {
             if (product.getId() == id) {
                 return product;
